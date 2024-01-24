@@ -28,7 +28,7 @@ Cuprins:
 
 ![Cuprinsul primului tutorial](Cuprins-Tutorial-Obsidian.png)
 
-Versiunea documentului curent este 1.0.0
+Versiunea documentului curent este 1.0.1
 Ianuarie 24, 2024
 
 Întregul repo poate fi descărcat și deschis ca vault în Obsidian. Pentru cei care doresc să tipărească documentul, există chiar un export în format pdf: `obsidian-zotero-pandoc.pdf`.
