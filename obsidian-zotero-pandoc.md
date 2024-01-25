@@ -6,7 +6,7 @@ author:
 	- "Universitatea Transilvania din Brașov"
 acknowledgements: Mulțumiri tuturor celor care integrează Obsidian în cercetarea științifică.
 text1: "Licență: Creative Commons BY-NC-ND 4.0 https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ro"
-text2: Ver. 1.0.0
+text2: Ver. 1.0.2
 text3: Ianuarie 2024
 titlepage-logo: ./images/repologo.png
 link-citations: true
@@ -20,7 +20,8 @@ figPrefix: fig.
 
 # Introducere
 
-Obsidian (obsidian.md) este una dintre cele mai bune soluții pentru crearea de PKB-uri (Personal Knowledge Base). O caracterizare rapidă ar fi o colecție de note care pot fi conectate unele cu altele prin marcarea unor cuvinte cheie drept linkuri. Dacă două linkuri din două note au același cuvânt cheie, putem spune că respectivele note sunt conectate. Acest mecanism permite exploatarea aceste baze de cunoaștere personale prin instrumente de căutare care returnează rezultate în funcție de mai multe criterii, dar și prin vizualizarea conexiunilor care au fost realizate prin intermediul unor grafuri. Din perspectiva datelor pe care le folosește Obsidian, toate notele sunt simple fișiere text care formatează textul folosind cea mai simplă sintaxă de markup care există: Markdown. Pentru a frunzări ce poate face programul și pentru a te informa cum poți formata și crea note, consultați https://help.obsidian.md/Home.
+Obsidian (obsidian.md) este una dintre cele mai bune soluții pentru crearea de PKB-uri (Personal Knowledge Base). O caracterizare rapidă ar fi o colecție de note care pot fi conectate unele cu altele prin marcarea unor cuvinte cheie drept linkuri. Dacă două linkuri din două note au același cuvânt cheie, putem spune că respectivele note sunt conectate. Acest mecanism permite exploatarea acestei baze de cunoaștere personale prin instrumente de căutare care returnează rezultate în funcție de mai multe criterii, dar și prin vizualizarea conexiunilor care au fost realizate prin intermediul unor grafuri. Din perspectiva datelor pe care le folosește Obsidian, toate notele sunt simple fișiere text care formatează textul folosind cea mai simplă sintaxă de markup care există: Markdown. Pentru a frunzări ce poate face programul și pentru a te informa cum poți formata și crea note, consultați https://help.obsidian.md/Home.
+
 Obsidian poate fi folosit împreună cu Zotero pentru editarea de lucrări științifice. Utilitatea lucrului cu aceste date culese în Zotero în Obsidian sub formă de note este aceea că extinzi capabilitățile lui Zotero care se află într-o zonă de depozitare și descriere a operelor, cu o altă paradigmă care permite o exploatare a acestor date prin formatare, interconectare, vizualizare și chiar export în alte formate dacă acest lucru este util. Ba mai mult, această valorificare folosind Obsidian se dovedește foarte utilă în etapa de cercetare, când ai nevoie ca informația să fie foarte bine conectată și contextualizată, pentru că din acest Personal Knowledge Base vor fi extrase cele mai valoroase informații. Merită tot efortul de a investi în transformarea unui vault într-o lucrare de valoare. Vom porni de la premiza că în Zotero deja ai articolele de cercetare organizate. Folosind câteva pluginuri în Zotero și Obsidian, vom reuși să creăm contextul informațional bogat care este necesar extragerii unor concluzii valoroase. Obsidian este un instrument care oferă o extindere a funcționalităților care poate satisface cele mai exigente cerințe de investigare și prelucrare de la agregare, vizualizare, până la bibliometrie.
 
 Tutorialul vă va învăța cum să eficientizați lucrul cu Zotero, cum să *trageți* notele din Zotero în Obsidian automat pentru a le îmbogăți, pentru a le contextualiza și vă mai învață cum să folosiți Pandoc-ul, un utilitar esențial pentru transformarea dintr-un format în altul, mai ales a creațiilor din domeniul cercetării științifice.
@@ -42,15 +43,16 @@ Versiunile software folosite la momentul redactării sunt:
 | *Obsidian | Citations | 0.4.5 |
 | *Obsidian | Obsidian Zotero Integration | 3.1.7 |
 | *Obsidian | Pandoc Reference List | 2.0.25 |
+| *Obsidian | Zotero Integration | 3.1.7 |
 | Pandoc |  | 3.1.11 |
 | pandoc-crossref |  | 0.3.17.0b |
 
-Versiunea documentului curent este 1.0.1
-Ianuarie 24, 2024
+Versiunea documentului curent este 1.0.2
+Ianuarie 25, 2024
 
 # Conectarea lui Zotero cu Obsidian
 
-Ca pas preliminar trebuie să aveți deja instalat Zotero versiunea 6, unde ai deja colecția de înregistrări bibliografice aferentă articolului sau lucrării pe care o scrii.
+Ca pas preliminar trebuie să aveți deja instalat Zotero versiunea 6, unde ai deja colecția de înregistrări bibliografice aferentă articolului sau lucrării pe care o scrii. Trebuie să fie și Obsidian instalat deja - obsidian.md.
 
 ## Instalarea plugin-urilor necesare în Zotero
 
@@ -82,14 +84,14 @@ Pentru a instala acest plugin, se va descărca de la https://github.com/windingw
 
 # Exportul datelor din Zotero într-un fișier live
 
-Primul lucru care trebuie făcut după instalarea pluginurilor este exportul unui fișier `.bib` din Zotero. Acest fișier trebuie să includă toate datele bibliografice ale articolelor și eventual alte cărților pe care le ai organizate folosind Zotero, fiind folosit de un plugin din Zotero denumit Citation. Cel mai bun lucru ar fi să exporți întreaga colecție din Zotero. Astfel, vei avea și un backup al înregistrărilor dincolo de realizarea punții cu Obsidian.
+Primul lucru care trebuie făcut după instalarea pluginurilor este exportul unui fișier `.bib` din Zotero. Acest fișier trebuie să includă toate datele bibliografice ale articolelor și eventual ale cărților pe care le ai organizate folosind Zotero. Acest fișier va fi folosit de un plugin din Obsidian denumit Citation, dar și de utilitarul Pandoc pe care îl vom folosi pentru exportul documentelor. Cel mai bun lucru ar fi să exporți întreaga colecție din Zotero. Astfel, vei avea și un backup al înregistrărilor dincolo de realizarea punții cu Obsidian.
 
-![Selectarea întregii biblioteci pentru a fi exportată ca fișier .bib](./images/Export%20Better%20BibLaTex.png){#1 width=50%}
+![Selectarea întregii biblioteci pentru a fi exportată ca fișier .bib](./images/Export%20Better%20BibLaTex.png){#1 width=65%}
 
 Pentru a face acest export necesar, mai întâi se va selecta *My Library*, apoi se va naviga pe meniul File ->Export Library, iar din meniul de la Format se va opta pentru **Better BibLaTeX**. Se va bifa *Export Notes*, precum și *Keep Updated*, dar și *Background export*. Opțiunea *Keep Updated* este absolut necesară pentru ca de fiecare dată când se face o modificare în Zotero, aceasta să se reflecte și în fișierul care va fi rescris pe hard disk, acolo unde ai ales să-l pui în structura de directoare proprie.
 În cazul în care folosești mai multe computere, acest fișier ai putea să-l pui și pe un serviciu de găzduire cloud. Astfel, vei avea cea mai *proaspătă* versiune mereu.
 
-Pentru a verifica setările necesare, vom merge în Zotero la Edit -> Preferences (shortcut: *CMD + ,*) -> Better BibTex -> Open Better BibTex Preferences... > Automatic Export
+Pentru a verifica setările necesare, vom merge în Zotero la *Edit* -> *Preferences* (sau shortcut: *CMD + ,*) -> *Better BibTex* -> *Open Better BibTex Preferences*... > *Automatic Export*
 
 ![Meniul Automatic Export din Preferințele plugin-ului Better BibTex](./images/BibtexPreferences-AutomaticExport.png){#2 width=70%}
 
@@ -559,3 +561,5 @@ Acest pas va crea un fișier PDF nou nouț care în afară de conținut ul docum
 Pandoc wiki: [Home · jgm/pandoc Wiki · GitHub](https://github.com/jgm/pandoc/wiki)
 Problemele legate de modul în care este generat cuprinsul: [Issue of --numbered-sections used with --base-header-level=2: produces 0.x.y · Issue #5071 · jgm/pandoc · GitHub](https://github.com/jgm/pandoc/issues/5071)
 Pandoc Crossref: [pandoc-crossref(1) | pandoc-crossref](https://lierdakil.github.io/pandoc-crossref/)
+
+# Referințe bibliografice
