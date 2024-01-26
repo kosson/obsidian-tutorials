@@ -181,6 +181,15 @@ Notă:
 ```
 
 Observă faptul că este o structură pe care șabloanele Nunjucks le oferă. Pentru cei care doresc să modifice modul în care este compusă nota la momentul importului din Zotero, pot să o facă consultând https://github.com/mgmeyers/obsidian-zotero-integration/blob/main/docs/Templating.md și adaptând acolo unde au nevoie de un rezultat diferit. 
+
+Trebuie precizat faptul că în fragmentul de șablon de mai jos, calea către fișierul .bib este cea specifică unui sistem Linux/GNU. Trebuie pusă calea către `Library-Zotero-all.bib` acolo unde a fost salvat în Windows, dacă acesta este sistemul de operare pe care îl folosești
+
+```text
+{{abstractNo--resource-path /home/nicolaie/Documents/obsidian-tutorials/images/ --csl https://raw.githubusercontent.com/citation-style-language/styles/master/harvard-limerick.csl --bibliography="/home/nicolaie/Documents/Library-Zotero-all.bib" --pdf-engine=/usr/bin/pdflatex --filter pandoc-crossref --number-sections --citeproc}}
+```
+
+Același lucru trebuie făcut și pentru calea pusă argumentului `--resource-path`. În cazul de mai sus, urmează structura de subdirectoare a unui sistem Linux/GNU. La fel și în cazul opțiunii `--bibliography`. Pentru Windows va trebui pusă calea către subdirectorul images din vaultul curent. Calea care trebuie precizată pentru argumentul  `--pdf-engine` poate să fie ceva similar cu `C:\Program Files\MiKTeX 2.9\miktex\bin\x64\pdflatex.exe` după instalarea pachetului [Home](https://miktex.org/). Parte a pachetului este binarul necesar (vezi [pdftex](https://miktex.org/packages/pdftex)).
+
 Vă veți întreba pe bună dreptate de unde am luat numele câmpurilor înregistrării din Zotero pentru a le pune în locțiitoarele de valori demarcate prin acolade duble precum `{{abstractNote}}`. Răspunsul este legat de posibilitatea inspectării a datelor care vor fi aduse din Zotero, folosind o altă opțiune pe care o pune la dispoziție *Zotero Integration*. Este vorba despre *Data explorer* care poate fi accesat prin apelarea panoului comenzilor CTRL+p de unde începi să cauți *Zotero Integration: Data Explorer*. Imediat se va deschide un panou suplimentar în partea dreaptă care va sublinia cu albastru numele câmpurilor pentru valorile care vor fi aduse din Zotero colorate cu verde.
 
 ![Zotero Integration Data Explorer - numele câmpurilor și valorile acestora](./images/obsidian-zotero-pandoc/Zotero%20Integration%20Data%20Explorer%20-%20numele%20câmpurilor%20și%20valorile%20acestora.png){#4 width=80%}
