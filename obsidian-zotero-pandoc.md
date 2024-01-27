@@ -1,9 +1,6 @@
 ---
 title: Tutorial de lucru cu literatura științifică și scriere academică folosind Zotero, Obsidian și Pandoc
-author: 
-	- "Nicolaie Constantinescu,"
-	- "kosson@gmail.com,"
-	- "Universitatea Transilvania din Brașov"
+author: Nicolaie Constantinescu, kosson@gmail.com, Universitatea Transilvania din Brașov
 acknowledgements: Mulțumiri tuturor celor care integrează Obsidian în cercetarea științifică.
 text1: "Licență: Creative Commons BY-NC-ND 4.0 https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ro"
 text2: Ver. 1.0.3
