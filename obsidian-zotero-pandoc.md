@@ -44,8 +44,8 @@ Versiunile software folosite la momentul redactării sunt:
 | Pandoc |  | 3.1.11 |
 | pandoc-crossref |  | 0.3.17.0b |
 
-Versiunea documentului curent este 1.0.3
-Ianuarie 26, 2024
+Versiunea documentului curent este 1.0.4
+Ianuarie 27, 2024
 
 # Conectarea lui Zotero cu Obsidian
 
@@ -90,7 +90,7 @@ Pentru a face acest export necesar, mai întâi se va selecta *My Library*, apoi
 
 Pentru a verifica setările necesare, vom merge în Zotero la *Edit* -> *Preferences* (sau shortcut: *CMD + ,*) -> *Better BibTex* -> *Open Better BibTex Preferences*... > *Automatic Export*
 
-![Meniul Automatic Export din Preferințele plugin-ului Better BibTex](./images/obsidian-zotero-pandoc/BibtexPreferences-AutomaticExport.png){#2 width=70%}
+![Meniul Automatic Export din Preferințele plugin-ului Better BibTex](./images/obsidian-zotero-pandoc/BibtexPreferences-AutomaticExport.png){#2 width=95%}
 
 Din Figura 2 se observă faptul că toți pașii exportului au fost îndepliniți corect. Căile sunt specifice unui sistem Linux, dar similar ar trebui să apară și pe Windows 11. Pentru fișierul de export, în acest caz s-a optat pentru denumirea de `Library-Zotero-all.bib`. Acest nume a fost ales arbitrar. Poți să-l denumești cum dorești.
 
@@ -237,10 +237,21 @@ Notă:
 {% for relation in relations | selectattr("citekey") %} [{{relation.citekey}}]({{relation.citekey}}){% if not loop.last %}, {% endif%} {% endfor %}
 ```
 
-Observă faptul că este o structură pe care șabloanele Nunjucks le oferă. Pentru cei care doresc să modifice modul în care este compusă nota la momentul importului din Zotero, pot să o facă consultând https://github.com/mgmeyers/obsidian-zotero-integration/blob/main/docs/Templating.md și adaptând acolo unde au nevoie de un rezultat diferit. 
+Observă faptul că este o structură pe care șabloanele Nunjucks le oferă. Pentru cei care doresc să modifice modul în care este compusă nota la momentul importului din Zotero, pot să o facă consultând https://github.com/mgmeyers/obsidian-zotero-integration/blob/main/docs/Templating.md și adaptând acolo unde au nevoie de un rezultat diferit.
+
+Trebuie precizat faptul că în fragmentul de șablon de mai jos, calea către fișierul .bib este cea specifică unui sistem Linux/GNU. Trebuie pusă calea către `Library-Zotero-all.bib` acolo unde a fost salvat în Windows, dacă acesta este sistemul de operare pe care îl folosești. Mai jos este un exemplu care menționează căile unde se află resursele pe un sistem Linux/GNU, distribuția Ubuntu 23.10.
+
+```text
+{{abstractNo--resource-path /home/nicolaie/Documents/obsidian-tutorials/images/ --csl https://raw.githubusercontent.com/citation-style-language/styles/master/harvard-limerick.csl --bibliography="/home/nicolaie/Documents/Library-Zotero-all.bib" --pdf-engine=/usr/bin/pdflatex --filter pandoc-crossref --number-sections --citeproc}}
+```
+
+Același lucru trebuie făcut și pentru calea pusă argumentului `--resource-path`. În cazul de mai sus, urmează structura de subdirectoare a unui sistem Linux/GNU. La fel și în cazul opțiunii `--bibliography`. Pentru Windows va trebui pusă calea către subdirectorul images din vault-ul curent. Calea care trebuie precizată pentru argumentul  `--pdf-engine` poate să fie ceva similar cu `C:\Program Files\MiKTeX 2.9\miktex\bin\x64\pdflatex.exe` după instalarea pachetului [Home](https://miktex.org/). Parte a pachetului este binarul necesar (vezi [pdftex](https://miktex.org/packages/pdftex)).
+
+Mai există o problemă cu care vă veți confrunta. În cazul în care veți opta pentru precizarea ca fișierul `.csl` să fie luat din locul de unde este pus în repo-ul de Github, atunci când veți face exportul, Pandocul se va plânge că nu-l poate accesa. Acest lucru se petrece deoarece nu te poți baza întotdeauna pe linkurile dela Github. Cel mai bine este să-l descărcați și să puneți un link către fișierul descărcat de pe hard-disk: `--csl /home/nicolaie/Documents/harvard-limerick.csl`. Astfel, veți elimina o potențială eroare și un motiv de frustrare.
+
 Vă veți întreba pe bună dreptate de unde am luat numele câmpurilor înregistrării din Zotero pentru a le pune în locțiitoarele de valori demarcate prin acolade duble precum `{{abstractNote}}`. Răspunsul este legat de posibilitatea inspectării a datelor care vor fi aduse din Zotero, folosind o altă opțiune pe care o pune la dispoziție *Zotero Integration*. Este vorba despre *Data explorer* care poate fi accesat prin apelarea panoului comenzilor CTRL+p de unde începi să cauți *Zotero Integration: Data Explorer*. Imediat se va deschide un panou suplimentar în partea dreaptă care va sublinia cu albastru numele câmpurilor pentru valorile care vor fi aduse din Zotero colorate cu verde.
 
-![Zotero Integration Data Explorer - numele câmpurilor și valorile acestora](./images/obsidian-zotero-pandoc/Zotero%20Integration%20Data%20Explorer%20-%20numele%20câmpurilor%20și%20valorile%20acestora.png){#4 width=80%}
+![Zotero Integration Data Explorer - numele câmpurilor și valorile acestora](./images/obsidian-zotero-pandoc/Zotero%20Integration%20Data%20Explorer%20-%20numele%20câmpurilor%20și%20valorile%20acestora.png){#4 width=94%}
 
 Dacă priviți cu atenție prin comparație cu șablonul, veți înțelege foarte rapid care este modul de aranjament și cum se face înlocuirea cu valori atâta vreme cât ai menționat numele corect al câmpului pentru care vrei să preiei valoarea.
 
@@ -260,7 +271,7 @@ Imediat va apărea panoul de căutare și selecție cu care sunteți deja famili
 
 Rezultatul este similar cu următoarea captură.
 
-![Nouă notă creată prin Zotero Import paper](./images/obsidian-zotero-pandoc/Nouă%20notă%20creată%20prin%20Zotero%20Import%20paper.png){#7 width=60%}
+![Nouă notă creată prin Zotero Import paper](./images/obsidian-zotero-pandoc/Nouă%20notă%20creată%20prin%20Zotero%20Import%20paper.png){#7 width=94%}
 
 Citatele care au comentarii vor fi afișate precum în următoarea imagine.
 

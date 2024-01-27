@@ -2,7 +2,10 @@
 
 Here I will keep some tutorials for Obsidian workings
 
-Acesta este repo-ul unde veți găsi materiale dedicate extinderii practicilor personale privind munca intelectuală.
+Acesta este repo-ul unde veți găsi materiale dedicate extinderii practicilor personale privind munca intelectuală. Ce veți învăța:
+- lucrul cu Zotero și cele mai valoroase pluginuri,
+- lucrul cu Obsidian și pluginuri
+- OCR-izare formule matematice.
 
 ## Tutorial de lucru cu literatura științifică și scriere academică folosind Zotero, Obsidian și Pandoc
 
@@ -28,14 +31,15 @@ Cuprins:
 
 ![Cuprinsul primului tutorial](Cuprins-Tutorial-Obsidian.png)
 
-Versiunea documentului `obsidian-zotero-pandoc` este 1.0.3
-Ianuarie 26, 2024
+Versiunea documentului `obsidian-zotero-pandoc` este 1.0.4
+Ianuarie 27, 2024
 
 Versiuni anterioare:
 - 1.0.0 - 24 ianuarie
 - 1.0.1 - 24 ianuarie (corecturi)
 - 1.0.2 - 25 ianuarie (corecturi, adăugiri)
 - 1.0.3 - 26 ianuarie (corecturi, adăugiri și material nou). P.S. Nu a fost făcut export în PDF a tutorialului actualizat.
+- 1.0.4 - 27 ianuarie (corecturi și multe lămuriri suplimentare). Am actualizat și PDF-ul.
 
 Întregul repo poate fi descărcat și deschis ca vault în Obsidian. Pentru cei care doresc să tipărească documentul, există chiar un export în format pdf: `obsidian-zotero-pandoc.pdf`.
 
